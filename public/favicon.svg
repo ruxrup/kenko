@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 193.86 187.72">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #222;
+      }
+
+      .cls-2 {
+        fill: #e6e6e6;
+        stroke-width: 0px;
+      }
+
+      .cls-3 {
+        font-family: Comfortaa-Bold, Comfortaa;
+        font-size: 100px;
+        font-weight: 700;
+      }
+
+      .cls-4 {
+        fill: #e57e25;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <ellipse class="cls-2" cx="96.93" cy="93.86" rx="96.93" ry="93.86"/>
+      <text class="cls-3" transform="translate(52.8 126.22)"><tspan class="cls-1" x="0" y="0">k</tspan><tspan class="cls-4" x="56.9" y="0">.</tspan></text>
+    </g>
+  </g>
+</svg>

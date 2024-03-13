@@ -3,9 +3,7 @@ import { getToday } from "../utils/helpers";
 import supabase from "./supabase";
 
 export async function getOrders({ filter, sortBy, page }) {
-  let query = supabase
-    .from("orders")
-    .select("*, user(*),dishes(*)", { count: "exact" });
+  let query = supabase.from("orders").select("*, user(*)", { count: "exact" });
 
   //FILTER:
   if (filter) query[filter.method || "eq"](filter.field, filter.value);
@@ -31,7 +29,7 @@ export async function getOrders({ filter, sortBy, page }) {
 export async function getOrder(id) {
   const { data, error } = await supabase
     .from("orders")
-    .select("*, user(*),dishes(*)")
+    .select("*, user(*)")
     .eq("id", id)
     .single();
 
@@ -47,7 +45,7 @@ export async function getOrder(id) {
 export async function getOrdersAfterDate(date) {
   const { data, error } = await supabase
     .from("orders")
-    .select("*,user(*),dishes(*)")
+    .select("*,user(*)")
     .gte("created_at", date)
     .lte("created_at", getToday());
 
@@ -80,7 +78,7 @@ export async function getStaysAfterDate(date) {
 export async function getStaysTodayActivity() {
   const { data, error } = await supabase
     .from("orders")
-    .select("*, user(*),dishes(*)")
+    .select("*, user(*)")
     .neq("status", "delivered");
 
   if (error) {

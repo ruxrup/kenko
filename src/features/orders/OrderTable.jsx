@@ -14,9 +14,8 @@ function OrderTable() {
 
   return (
     <Menus>
-      <Table columns="0.6fr 1.5fr 1.2fr 1.2fr 1fr 1fr 1fr 2rem">
+      <Table columns="1.5fr 1.2fr 1.2fr 1fr 1fr 1fr 2rem">
         <Table.Header>
-          <div>Dish</div>
           <div>User</div>
           <div>Date/Time</div>
           <div>Address/Phone</div>

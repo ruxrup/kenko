@@ -17,13 +17,6 @@ import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import useDeleteOrder from "./useDeleteOrder";
 
-const Cabin = styled.div`
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--color-grey-600);
-  font-family: "Sono";
-`;
-
 const Stacked = styled.div`
   display: flex;
   flex-direction: column;
@@ -54,7 +47,6 @@ function OrderRow({
     extraPrice,
     status,
     user: { firstName: guestName, lastName: guestName2, email, address, phone },
-    dishes: { name: dishname },
   },
 }) {
   const navigate = useNavigate();
@@ -68,7 +60,6 @@ function OrderRow({
 
   return (
     <Table.Row>
-      <Cabin>{dishname}</Cabin>
       <Stacked>
         <span>{guestName + " " + guestName2}</span>
         <span>{email}</span>

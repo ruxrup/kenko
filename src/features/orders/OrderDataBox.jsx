@@ -3,17 +3,12 @@ import { format, isToday } from "date-fns";
 import {
   HiOutlineCheckCircle,
   HiOutlineCurrencyDollar,
-  HiOutlineHomeModern,
   HiUser,
 } from "react-icons/hi2";
 
 import DataItem from "../../ui/DataItem";
 
-import {
-  formatDistanceFromNow,
-  formatCurrency,
-  getNow,
-} from "../../utils/helpers";
+import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
 
 const StyledOrderDataBox = styled.section`
   /* Box */
@@ -122,16 +117,17 @@ function OrderDataBox({ order }) {
       address,
       phone,
     },
-    dishes: { name: dishName, servings: dishServings, discount: dishDiscount },
   } = order;
+
+  const descriptionQuant = description.split(",");
 
   return (
     <StyledOrderDataBox>
       <Header>
         <div>
-          <HiOutlineHomeModern />
+          <HiUser />
           <p>
-            {dishServings} servings for <span>{dishName}</span>
+            <span>{guestFName + " " + guestLName}</span>
           </p>
         </div>
 
@@ -145,9 +141,7 @@ function OrderDataBox({ order }) {
 
       <Section>
         <Guest>
-          <HiUser />
-          <p>{guestFName + " " + guestLName} </p>
-          <span>&bull;</span>
+          <p>Contact info: </p>
           <p>{email}</p>
           <span>&bull;</span>
           <p>{phone}</p>
@@ -158,20 +152,20 @@ function OrderDataBox({ order }) {
         <DataItem icon={<HiOutlineCheckCircle />} label="Priority Order?">
           {isPriority ? "Yes" : "No"}
         </DataItem>
-        <DataItem icon={<HiOutlineCheckCircle />} label="Description of dish:">
-          {description}
+        <DataItem icon={<HiOutlineCheckCircle />} label="Order description:">
+          {descriptionQuant.map((dish, i) => (
+            <span key={i}>{dish}</span>
+          ))}
         </DataItem>
 
         <Price isPaid={isPaid}>
           <DataItem icon={<HiOutlineCurrencyDollar />} label={`Total price`}>
-            {formatCurrency(price + extraPrice - dishDiscount)}
+            {formatCurrency(price + extraPrice)}
 
             {isPriority &&
               ` (${formatCurrency(price)} dish + ${formatCurrency(
                 extraPrice
-              )} extra Charges - ${formatCurrency(
-                dishDiscount
-              )} dish discount)`}
+              )} extra Charges `}
           </DataItem>
 
           <p>{isPaid ? "Paid" : "Will pay at property"}</p>
